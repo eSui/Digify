@@ -185,62 +185,56 @@ document.getElementById("follow-btn").addEventListener("click", function(e){
 document.getElementById("donut-btn").addEventListener("click", function(e){
   e.preventDefault();
   var donutRequest = new XMLHttpRequest();
-  var donutGenre = document.getElementById("query").value
+  var donutGenre = document.getElementById("query").value;
   var donutUrl = "https://api.spotify.com/v1/search" + "?q=genre:" + encodeURI('"'+ donutGenre +'"') + "&type=artist";
+  var donutDataset = [];
   donutRequest.open("GET", donutUrl);
   donutRequest.onload = function(){
     var donutData = JSON.parse(donutRequest.responseText);
     // Start taking the data from here and putting them into d3 Stuff once user submits stuff.
 
-    var donutDataset = donutData.artists.items.sort(function(a,b) {
+      donutDataset = donutData.artists.items.sort(function(a,b) {
       return a.followers.total-b.followers.total;
     }).reverse();
     console.log(donutDataset);
     //d3 section
-    // delcaring the margin and radius
-    var margin = {top: 20, right: 20, bottom: 20, left: 20},
-        width = 500 - margin.right - margin.left,
-        height = 500 - margin.top - margin.bottom,
-        radius = width/2;
+    // attempt #3
+    var width = 800,
+        height = 800,
+        radius = Math.min(width, height)/2;
 
-    var color = d3.scaleOrdinal()
-                  .range(["#EB9CED", "#A8F1E6", "#75A9F7", "#A06BAD", "#CA3AB3"]);
+    var color = d3.scaleOrdinal(d3.schemeCategory20b);
 
-    // d3 needs two seperate arc and pie generatiors: arc here
+    var svg = d3.select("#svg-container")
+                .append("svg")
+                .attr("width", width)
+                .attr("height", height)
+                .append("g")
+                .attr("transform", 'translate('+ width/2 + ',' + height/2 + ')');
+
     var arc = d3.arc()
-                .outerRadius(radius - 10)
-                .innerRadius(0);
-
-    var labelArc = d3.arc()
-                    .outerRadius(radius-50)
-                    .innerRadius(radius-50);
+                .innerRadius(radius - 75)
+                .outerRadius(radius);
 
     var pie = d3.pie()
-              .sort(null)
-              .value(function(d){ return d.followers.total });
-
-    var canvas = d3.select("#svg-container").append("svg")
-                    .attr("width", width)
-                    .attr("height", height)
-                    .append("g")
-                    .attr("transform", "translate("+ width/2 + "," + height/2 + ")");
-
-    var g = canvas.selectAll(".arc")
+            .value(function(d){return d.followers.total})
+            .sort(null);
+    function tweenDonut(b) {
+        b.innerRadius = 0;
+        var i = d3.interpolate({startAngle: 0, endAngle: 0}, b);
+        return function(t) { return arc(i(t)); };
+      }
+    var path = svg.selectAll("path")
                   .data(pie(donutDataset))
-                  .enter().append("g")
-                  .attr("class", "arc")
-                  .style("fill", "blue");
+                  .enter()
+                  .append("path")
+                  .attr("d", arc)
+                  .attr("fill", function(d, i){return color(d.data.followers.total)})
+                  .transition()
+                  .ease (d3.easeLinear)
+                  .duration(2000)
+                  .attrTween("d",tweenDonut);
 
-    // append the path of the arc
-    g.append("path")
-      .attr("d",arc);
-
-
-    // append the text to arc (labels)
-    g.append("text")
-      .attr("transform", function(d){return "translate(" +labelArc.centroid(d) +")";})
-      .attr("dy", ".35em")
-      .text(function(d){ return d.name; });
   }
   donutRequest.send();
 });
