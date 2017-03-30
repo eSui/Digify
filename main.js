@@ -219,6 +219,7 @@ document.getElementById("donut-btn").addEventListener("click", function(e){
     var pie = d3.pie()
             .value(function(d){return d.followers.total})
             .sort(null);
+
     function tweenDonut(b) {
         b.innerRadius = 0;
         var i = d3.interpolate({startAngle: 0, endAngle: 0}, b);
@@ -228,6 +229,7 @@ document.getElementById("donut-btn").addEventListener("click", function(e){
                   .data(pie(donutDataset))
                   .enter()
                   .append("path")
+                  .attr("class", "path")
                   .attr("d", arc)
                   .attr("fill", function(d, i){return color(d.data.followers.total)})
                   .transition()

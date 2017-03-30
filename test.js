@@ -45,6 +45,7 @@ donutRequest.onload = function(){
                 .data(pie(donutDataset))
                 .enter()
                 .append("path")
+                .attr("class", "path")
                 .attr("d", arc)
                 .attr("fill", function(d, i){return color(d.data.followers.total)})
                 .transition()
