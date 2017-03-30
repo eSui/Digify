@@ -15,13 +15,35 @@ body{
   height: 100vh;
   text-align: center;
   color: #CA3AB3;
-}
-h1{
-  color: black !important;
+  display: inline-block;
 }
 
-.content img{
+.logo{
+  width: 300px;
+  height: 300px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: inline-block;
   opacity: 0.7;
+  /*border: 1px solid black;*/
+}
+
+#spot{
+  background-image: url("spotify-logo.png");
+}
+#plus{
+  background-image: url("plus.png");
+  width: 100px !important;
+  height: 100px !important;
+  margin-bottom: 120px;
+}
+#d3{
+  background-image: url("d3.png");
+}
+
+h1{
+  color: black !important;
 }
 
 #intro .content{
