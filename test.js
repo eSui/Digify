@@ -18,7 +18,7 @@ donutRequest.onload = function(){
       height = 800,
       radius = Math.min(width, height)/2;
 
-  var color = d3.scaleOrdinal(d3.schemeCategory20b);
+  var color = d3.scaleOrdinal(d3.schemeCategory20);
 
   var svg = d3.select("#svg-container")
               .append("svg")
@@ -41,6 +41,27 @@ donutRequest.onload = function(){
       return function(t) { return arc(i(t)); };
     }
 
+    var charts = d3.select("#svg-container");
+
+    var createLegend = function(artistName){
+      var legends = charts.select(".legend")
+                    .selectAll('g')
+                      .data(donutDataset)
+                      .enter()
+                      .append('g')
+                      .attr('transform', function(d,i){return 'translate('+ (i*150+50)+", 10)"});
+
+      legends.append("circle")
+              .attr('r', 6)
+              .style('fill', function(d,i){return color(i)});
+      legends.append('text')
+              .attr('dx', '1em')
+              .attr('dy', '.3em')
+              .text(function(d){return d})
+    }
+
+
+
   var path = svg.selectAll("path")
                 .data(pie(donutDataset))
                 .enter()
@@ -52,13 +73,6 @@ donutRequest.onload = function(){
                 .ease (d3.easeLinear)
                 .duration(2000)
                 .attrTween('d', tweenDonut);
-                // .attrTween('d', function(d) {
-                //     var i = d3.interpolate(d.startAngle+0.1, d.endAngle);
-                //     return function(t) {
-                //             d.endAngle = i(t);
-                //             return arc(d);
-                //           }
-                //         }
-                //       )};
+
               }
 donutRequest.send();

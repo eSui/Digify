@@ -32,6 +32,9 @@ document.getElementById("submit-btn").addEventListener("click", function(e){
                     .append("g")
                     .attr("transform", "translate(20,40)");
 
+    var div = d3.select("body").append("div")
+                .attr("class", "tooltip")
+                .style("opacity", 0);
 
     canvas.selectAll(".bar")
             .data(dataset)
@@ -45,6 +48,18 @@ document.getElementById("submit-btn").addEventListener("click", function(e){
               .attr("y", function(d,i){ return i*30 })
               .attr("data-artist", function(d){return d.id})
               .on("click", function(d){ window.open(d.external_urls.spotify)})
+              .on("mouseover", function(d) {
+               div .transition()
+                   .duration(200)
+                   .style("opacity", .9);
+                   div .html("Popularity:"+ "<br/>" + d.popularity + "%")
+                   .style("left", (d3.event.pageX+5) + "px")
+                   .style("top", (d3.event.pageY - 14) + "px");
+               })
+               .on("mouseout", function(d) {
+                 div.transition()
+                 .duration(500)
+                 .style("opacity", 0)})
               .attr("width", 0)
               .transition()
               .duration(500)
@@ -86,6 +101,7 @@ document.getElementById("clear-btn").addEventListener("click", function(e){
   d3.selectAll("svg").remove();
   document.getElementById("submit-btn").disabled = false;
   document.getElementById("follow-btn").disabled = false;
+  document.getElementById("donut-btn").disabled = false;
 });
 
 document.getElementById("follow-btn").addEventListener("click", function(e){
@@ -134,6 +150,9 @@ document.getElementById("follow-btn").addEventListener("click", function(e){
                     .append("g")
                     .attr("transform", "translate(20,40)");
 
+    var div = d3.select("body").append("div")
+                .attr("class", "tooltip")
+                .style("opacity", 0);
 
     folloCanvas.selectAll(".bar")
             .data(folloDataset)
@@ -147,6 +166,18 @@ document.getElementById("follow-btn").addEventListener("click", function(e){
               .attr("y", function(d,i){ return i*30 })
               .attr("data-artist", function(d){return d.id})
               .on("click", function(d){ window.open(d.external_urls.spotify)})
+              .on("mouseover", function(d) {
+               div .transition()
+                   .duration(200)
+                   .style("opacity", .9);
+                   div .html("Followers:"+ "<br/>" + d.followers.total)
+                   .style("left", (d3.event.pageX+5) + "px")
+                   .style("top", (d3.event.pageY - 14) + "px");
+               })
+               .on("mouseout", function(d) {
+                 div.transition()
+                 .duration(500)
+                 .style("opacity", 0)})
               .attr("width", 0)
               .transition()
               .duration(500)
@@ -203,7 +234,8 @@ document.getElementById("donut-btn").addEventListener("click", function(e){
         height = 800,
         radius = Math.min(width, height)/2;
 
-    var color = d3.scaleOrdinal(d3.schemeCategory20b);
+    var color = d3.scaleOrdinal()
+                  .range(["#FEFEDA", "#E0DAFF", "#E2F6FE", "#DAFEDF", "#ECC2FF","#EB9CED", "#A8F1E6", "#75A9F7", "#A06BAD", "#CA3AB3"]);
 
     var svg = d3.select("#svg-container")
                 .append("svg")
@@ -239,6 +271,7 @@ document.getElementById("donut-btn").addEventListener("click", function(e){
 
   }
   donutRequest.send();
+  document.getElementById("donut-btn").disabled = true;
 });
 // looping through each scene for scrolling effects.
 $(".tile").each(function(){
@@ -248,7 +281,7 @@ $(".tile").each(function(){
   // Building a Scene
   var ourScene = new ScrollMagic.Scene({
       triggerElement: this,
-      triggerHook: 0.7,
+      triggerHook: 0.7
       // reverse: false
   })
   .setClassToggle(this, 'fade-in')

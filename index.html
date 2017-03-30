@@ -8,6 +8,7 @@
     <title>Spotify Stats</title>
   </head>
   <body>
+
     <div id="intro">
       <div class="content">
         <img src="spotify-logo.png" alt="">
@@ -16,56 +17,61 @@
         <p>Accessing Spotify stats through API and displaying with D3</p>
       </div>
     </div>
+
     <div id=main class="main-container">
-      <!-- <div class="spacer"></div> -->
+
       <div id='tile01' class="tile">
-        <h2>Project Title Here</h2>
+        <h2>DIGIFY</h2>
         <p class='info'>
           The digital age has long arrived in the music industry and with it brought a lot of change for how we can gauge the success of artists. Specifically on the Spotify platform, artists stats do not translate as expected. In the following application you can gain some insight on trends on how each artist is performing in their respective genres.
         </p>
       </div>
 
-    </div>
-    <div id='tile02'class="tile">
-      <!-- insert some image here -->
-      <h2>For this Project:</h2>
-      <ul class='info'>
-        <li>HTML, CSS, JS</li>
-        <li>D3.js</li>
-        <li>Scroll Magic</li>
-      </ul>
-    </div>
+      <!-- <div id='tile02'class="tile"> -->
+        <!-- insert some image here -->
+        <!-- <h2>For this Project:</h2>
+        <ul class='info'>
+          <li>HTML, CSS, JS</li>
+          <li>D3.js</li>
+          <li>Scroll Magic</li>
+        </ul>
+      </div> -->
 
-    <div id="tile03" class="tile container-fluid">
-      <!-- User can enter in a Genre here. Maybe make a random list of popular genres.  -->
-      <h2>Compare</h2>
-      <form id="search-form" >
-        <div class="form-inline">
-          <label for="genre">Genre:</label>
-          <input type="text" id="query"  class="form-control">
-          <button id="submit-btn" class="btn btn-primary">Submit</button>
-          <button id="clear-btn" class="btn btn-primary">Clear</button>
-          <button id='follow-btn' class="btn btn-primary">Show Followers</button>
-          <button id='donut-btn' class="btn btn-primary">I Like Donuts</button>
-        </div>
-      </form>
+      <div id="tile03" class="tile container-fluid">
+        <!-- User can enter in a Genre here. Maybe make a random list of popular genres.  -->
+        <h2>Compare</h2>
+        <form id="search-form" >
+          <div class="form-inline">
+            <label for="genre">Genre:</label>
+            <input type="text" id="query"  class="form-control">
+            <button id="submit-btn" class="btn btn-primary">Submit</button>
+            <button id="clear-btn" class="btn btn-primary">Clear</button>
+            <button id='follow-btn' class="btn btn-primary">Show Followers</button>
+            <button id='donut-btn' class="btn btn-primary">I Like Donuts</button>
+          </div>
+        </form>
 
-      <div id="svg-container"></div>
-    </div>
+        <div id="svg-container"></div>
+      </div>
 
-    <div id="tile04" class="tile">
-      <h2>Future Features</h2>
-      <ul class='info'>
-        <li>Expand data on Artists discography</li>
-        <li>Sort Data based on Year Released</li>
-        <li>Allowing User Spotify User Accounts to Connect</li>
-      </ul>
+      <!-- <div id="tile04" class="tile">
+        <h2>Future Features</h2>
+        <ul class='info'>
+          <li>Expand data on Artists discography</li>
+          <li>Sort Data based on Year Released</li>
+          <li>Allowing User Spotify User Accounts to Connect</li>
+        </ul>
+      </div> -->
+
     </div>
 
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+
     <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5/ScrollMagic.min.js"></script>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5/plugins/debug.addIndicators.min.js"></script>
 
     <script type="text/javascript" src='main.js' ></script>
