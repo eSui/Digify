@@ -2,6 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
+    <link rel="icon" href="spotify-logo.png">
     <link rel="stylesheet" href="master.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://d3js.org/d3.v4.min.js"></script>
@@ -17,7 +18,7 @@
         <div id='plus' class="logo"></div>
         <div id='d3' class="logo"></div>
         <!-- <div class="content-img"></div> -->
-        <h1>Spotify Stats</h1>
+        <h1>DIGIFY</h1>
         <p>Accessing Spotify stats through API and displaying with D3</p>
       </div>
     </div>
@@ -25,7 +26,7 @@
     <div id=main class="main-container">
 
       <div id='tile01' class="tile">
-        <h2>DIGIFY</h2>
+        <h2>Spotify Stats</h2>
         <p class='info'>
           The digital age has long arrived in the music industry and with it brought a lot of change for how we can gauge the success of artists. Specifically on the Spotify platform, artists stats do not translate as expected. In the following application you can gain some insight on trends on how each artist is performing in their respective genres.
         </p>
@@ -46,12 +47,12 @@
         <h2>Compare</h2>
         <form id="search-form" >
           <div class="form-inline">
-            <label for="genre">Genre:</label>
+            <label for="genre" placeholder='ie: rock, kpop, southern hip hop' >Genre:</label>
             <input type="text" id="query"  class="form-control">
-            <button id="submit-btn" class="btn btn-primary">Submit</button>
-            <button id="clear-btn" class="btn btn-primary">Clear</button>
-            <button id='follow-btn' class="btn btn-primary">Show Followers</button>
-            <button id='donut-btn' class="btn btn-primary">I Like Donuts</button>
+            <button id="clear-btn" class="btn btn-primary"> Clear </button>
+            <button id="submit-btn" class="btn btn-primary"> Popularity </button>
+            <button id='follow-btn' class="btn btn-primary"> Followers </button>
+            <button id='donut-btn' class="btn btn-primary"> I Like Donuts </button>
           </div>
         </form>
 

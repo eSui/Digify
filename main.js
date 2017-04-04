@@ -1,3 +1,11 @@
+document.getElementById("clear-btn").addEventListener("click", function(e){
+  e.preventDefault();
+  d3.selectAll("svg").remove();
+  document.getElementById("submit-btn").disabled = false;
+  document.getElementById("follow-btn").disabled = false;
+  document.getElementById("donut-btn").disabled = false;
+});
+
 document.getElementById("submit-btn").addEventListener("click", function(e){
   e.preventDefault();
   var ourRequest = new XMLHttpRequest();
@@ -94,14 +102,6 @@ document.getElementById("submit-btn").addEventListener("click", function(e){
   // Sending request without reloading page :3
   ourRequest.send();
   document.getElementById("submit-btn").disabled = true;
-});
-
-document.getElementById("clear-btn").addEventListener("click", function(e){
-  e.preventDefault();
-  d3.selectAll("svg").remove();
-  document.getElementById("submit-btn").disabled = false;
-  document.getElementById("follow-btn").disabled = false;
-  document.getElementById("donut-btn").disabled = false;
 });
 
 document.getElementById("follow-btn").addEventListener("click", function(e){
