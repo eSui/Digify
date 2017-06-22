@@ -12,9 +12,9 @@ You can check out the app in action [here](https://www.youtube.com/watch?v=kVqfO
 
 ## Built With
 
-* [Spotify Web API](http://www.dropwizard.io/1.0.2/docs/) - Spotify provided the data used for this app.
-* [Data Driven Documents](https://maven.apache.org/) - Javascript Library was used to display the data from Spotify API into easy to digest charts.
-* [ScrollMagic](https://rometools.github.io/rome/) - A little bit of animations were added to improve navigation throughout the app.
+* [Spotify Web API](https://developer.spotify.com/web-api/) - Spotify provided the data used for this app.
+* [Data Driven Documents](https://d3js.org/) - Javascript Library was used to display the data from Spotify API into easy to digest charts.
+* [ScrollMagic](http://scrollmagic.io/) - A little bit of animations were added to improve navigation throughout the app.
 
 ## Inspirations
 
