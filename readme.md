@@ -4,30 +4,21 @@ Digify aims to take our listening history, from Spotify, and display that histor
 
 ## Getting Started
 
-Simply scroll down and type in a genre of your choice. During the time of this project (March 2017), there was a disccrepancy within the Pop Genre. Ed Sheeran had taken the lead in popularity but his follower count did not reflect this at all.
+Simply scroll down and type in a genre of your choice. During the time of this project (March 2017), there was a discrepancy within the Pop Genre. Ed Sheeran had taken the lead in popularity but his follower count did not reflect this at all.
 
-### Prerequisites
+Unfortunately, due to Spotify's updated terms of service, the app currently cannot function at this time since it now requires user authentication for all calls to their API.  
 
-No need to install anything.
+You can check out the app in action [here](https://www.youtube.com/watch?v=kVqfOBM18g8).
 
 ## Built With
 
-<!-- * [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds -->
+* [Spotify Web API](http://www.dropwizard.io/1.0.2/docs/) - Spotify provided the data used for this app.
+* [Data Driven Documents](https://maven.apache.org/) - Javascript Library was used to display the data from Spotify API into easy to digest charts.
+* [ScrollMagic](https://rometools.github.io/rome/) - A little bit of animations were added to improve navigation throughout the app.
 
-## Contributing
+## Inspirations
 
+This project was inspired by one showcased by Spotify. You can check out their project [here](https://developer.spotify.com/showcase/item/klangspektrum/).
 
-## Versioning
-
-
-
-## Authors
-
-
-
-## License
-
-
-## Acknowledgments
+## Disclaimer
+As of May 2017, Spotify now requires API keys for all calls to their Web API.
